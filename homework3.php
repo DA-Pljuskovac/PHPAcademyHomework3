@@ -61,7 +61,10 @@ echo "<br>My favorite color is {$_POST['color']}";
         $folder="images".DIRECTORY_SEPARATOR.$img['name'];
         if ($img['size']>1048576) {
             echo "Image bigger than 1MB. Please select a smaller image";
-        } else {
+        }else if($img['size']==0){
+            echo "Image is either too big or invalid.";
+        }
+        else {
             move_uploaded_file($img['tmp_name'], $folder);
         }
 }
